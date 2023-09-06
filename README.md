@@ -7,7 +7,7 @@ The objective of this project is to control a 16x2 LCD display. We will be using
 
 ### Taking a look at the datasheets, we can see that the display has a total of 16 pins.
 <br><br>
-![lcd_seg](https://github.com/Advaith-RN/pes_lcd_segment/assets/77977360/3756b4e1-4f72-4ea3-a1fb-437880c33fdb)
+![lcd schematic](https://github.com/Advaith-RN/pes_lcd_segment/assets/77977360/cea32e47-9391-4efb-b82f-58dec38adfa2)
 <br><br>
 - Pins VCC, VDD and VEE are for our LCD backlight, contrast control, and power supply.
   - **VCC**: Ground
@@ -25,20 +25,16 @@ As we can see, all non-write operations have a varying length of trailing 0s, fo
 For the scope of this project, I will select a base set of instructions, which are absolutely necesssary to display our message on the LCD.
 
 
-### Instructions to be included:
-**Clear Display**<br>
+## Instructions to be included
+Clear Display<br>
 ```
 0  0  :  0  0  0  0  0  0  0  1
 ```
-**Return Home**<br>
+Return Home<br>
 ```
 0  0  :  0  0  0  0  0  0  1  -
 ```
-**Return Home**<br>
-```
-0  0  :  0  0  0  0  0  0  1  -
-```
-**Display ON/OFF**<br>
+Display ON/OFF<br>
 ```
 0  0  :  0  0  0  0  1  D  C  B
 
@@ -50,7 +46,7 @@ To turn on display, without a cursor:
 
 0  0  :  0  0  0  0  1  1  0  0
 ```
-**Function Set**<br>
+Function Set<br>
 ```
 0  0  :  0  0  1  DL N  F  0  0
 This instruction is used to specify whether we use 8-bit mode or 4-bit mode to transfer data.
@@ -63,4 +59,8 @@ We are sending 8-bit instructions, displaying on both lines, and displaying 5x11
 
 0  0  :  0  0  1  1  1  1  0  0
  
+```
+Write Data<br>
+```
+1  0  :  D0 D1 D2 D3 D4 D5 D6 D7
 ```
