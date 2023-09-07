@@ -5,7 +5,7 @@ The objective of this project is to control a 16x2 LCD display. We will be using
 
 ## Datasheets
 
-### Taking a look at the datasheets, we can see that the display has a total of 16 pins.
+### Taking a look at the [datasheets](https://www.sparkfun.com/datasheets/LCD/ADM1602K-NSW-FBS-3.3v.pdf), we can see that the display has a total of 16 pins.
 <br><br>
 ![lcd schematic](https://github.com/Advaith-RN/pes_lcd_segment/assets/77977360/cea32e47-9391-4efb-b82f-58dec38adfa2)
 <br><br>
