@@ -80,3 +80,7 @@ gtkwave dump.vcd
 ![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/46bd95ec-697d-453f-9e43-833da87274be)
 
 
+## RTL Synthesis
+
+
+
