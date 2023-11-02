@@ -82,5 +82,15 @@ gtkwave dump.vcd
 
 ## RTL Synthesis
 
+Run yosys, and execute these commands to synthesize the top module.
+```
+ read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib
+ read_verilog pes_lcd.v
+ synth -top pes_lcd
+```
+Ensure that the sky130 library is imported and copied into your working folder. The library can be found in [this repo](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop).
+
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/a9ddeb3e-1e15-40d9-8ab3-b088f135848e)
 
 
