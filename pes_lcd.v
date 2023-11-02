@@ -1,28 +1,5 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 	Carrier Frequency, Inc.
-// Engineer: 	Jon Carrier
-// 
-// Create Date:    21:33:11 06/17/2011 
-// Design Name: 
-// Module Name:    FPGA_2_LCD 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 	The clock should be set to 24MHz. Slower clocks should also work.
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: This module performs the full initialization procedure.
-//								Once init is done, the module takes in DATA and processes
-//								it according to OPER. When idle, the module indicates RDY.
-//								ENB, indicates that DATA and OPER are valid and the module 
-//								should start to read the lines.
-//								Note: the calling module must keep DATA valid until RDY re-asserts
-//
-//////////////////////////////////////////////////////////////////////////////////
+
 module FPGA_2_LCD(
 	CLK, LCD_RS, LCD_RW, LCD_E, LCD_DB, RDY, DATA, OPER, ENB, RST
 );
