@@ -82,15 +82,32 @@ gtkwave dump.vcd
 
 ## RTL Synthesis
 
+Ensure that the sky130 library is imported and copied into your working folder. The library can be found in [this repo](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop).
+
 Run yosys, and execute these commands to synthesize the top module.
 ```
  read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib
  read_verilog pes_lcd.v
  synth -top pes_lcd
 ```
-Ensure that the sky130 library is imported and copied into your working folder. The library can be found in [this repo](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop).
-
 
 ![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/a9ddeb3e-1e15-40d9-8ab3-b088f135848e)
+
+Generate the netlist with:
+```
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr pes_bupc_net.v
+```
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/540d31e9-afa6-4097-a1af-47d81516dcd3)
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/2ddf75ae-82b0-4bdb-ab96-e5f0362b2aa1)
+
+Now type ```show``` to display the netlist.
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/efe04566-808a-491f-b523-a68409da4f64)
+
+
+
 
 
