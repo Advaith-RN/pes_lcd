@@ -1,66 +1,151 @@
-`timescale 1ns / 1ps
+/*module pes_lcd_tb();
+
+    // Inputs
+    reg CLK;
+    reg [7:0] DATA;
+    reg [1:0] OPER;
+    reg ENB;
+    reg RST;
+    
+    // Outputs
+    wire RDY;
+    wire LCD_RS, LCD_RW, LCD_E; // Declare as wire
+    wire [7:0] LCD_DB;
+
+    // Instantiate the LCD module
+    pes_lcd dut (
+        .CLK(CLK),
+        .LCD_RS(LCD_RS),
+        .LCD_RW(LCD_RW),
+        .LCD_E(LCD_E),
+        .LCD_DB(LCD_DB),
+        .RDY(RDY),
+        .DATA(DATA),
+        .OPER(OPER),
+        .ENB(ENB),
+        .RST(RST)
+    );
+	
+    initial begin
+        $dumpfile("dump.vcd");
+	$dumpvars;
+    end
+    
+    
+    always begin
+        #5 CLK = ~CLK; // Generate a 10ns clock signal
+    end
+
+    // Testbench logic
+    initial begin
+        // Initialize inputs
+        CLK = 0;
+        DATA = 8'b11011011; // Example data (8 bits wide)
+        OPER = 2'b00; // Example operation (2 bits wide)
+        ENB = 1'b1; // Enable signal (1 bit wide)
+        RST = 1'b0; // Reset signal (1 bit wide)
+        
+        // Wait for a few clock cycles before starting the test
+        #20;
+        
+        // Test case 1: Write data to the LCD
+        #10 DATA = 8'b10101010; // Write data (8 bits wide)
+        ENB = 1'b1; // Enable data transfer
+        #10 ENB = 1'b0; // Disable data transfer
+        
+        // Test case 2: Read data from the LCD
+        ENB = 1'b1; // Enable read operation
+        #10 ENB = 1'b0; // Disable read operation
+        
+        // Simulation end
+        $finish;
+    end
+
+endmodule
+
+*/
 
 module pes_lcd_tb();
 
-  // Inputs
-  reg CLK;
-  reg DATA;
-  reg OPER;
-  reg ENB;
-  reg RST;
+    // Inputs
+    reg CLK;
+    reg [7:0] DATA;
+    reg [1:0] OPER;
+    reg ENB;
+    reg RST;
+    
+    // Outputs
+    wire RDY;
+    wire LCD_RS, LCD_RW, LCD_E; // Outputs from the module
+    wire [7:0] LCD_DB;
 
-  // Outputs
-  wire RDY;
-  wire LCD_RS;
-  wire LCD_RW;
-  wire LCD_E;
-  wire [7:0] LCD_DB;
+    // Instantiate the LCD module
+    pes_lcd dut (
+        .CLK(CLK),
+        .LCD_RS(LCD_RS),
+        .LCD_RW(LCD_RW),
+        .LCD_E(LCD_E),
+        .LCD_DB(LCD_DB),
+        .RDY(RDY),
+        .DATA(DATA),
+        .OPER(OPER),
+        .ENB(ENB),
+        .RST(RST)
+    );
 
-  // Instantiate the pes_lcd module
-  pes_lcd dut (
-    .CLK(CLK),
-    .DATA(DATA),
-    .OPER(OPER),
-    .ENB(ENB),
-    .RST(RST),
-    .RDY(RDY),
-    .LCD_RS(LCD_RS),
-    .LCD_RW(LCD_RW),
-    .LCD_E(LCD_E),
-    .LCD_DB(LCD_DB)
-  );
+     initial begin
+        $dumpfile("dump.vcd");
+	$dumpvars;
+    end
+    
+    
+    always begin
+        #5 CLK = ~CLK; // Generate a 10ns clock signal
+    end
 
-  // Clock generation
-  always begin
-    #5 CLK = ~CLK; // 24MHz clock period
-  end
+    // Testbench logic
+    initial begin
+        // Initialize inputs
+        CLK = 0;
+        DATA = 8'b11011011; // Example data (8 bits wide)
+        OPER = 2'b00; // Example operation (2 bits wide)
+        ENB = 1'b1; // Enable signal (1 bit wide)
+        RST = 1'b0; // Reset signal (1 bit wide)
+        
+        // Wait for a few clock cycles before starting the test
+        #20;
+        
+        // Test case 1: Write data to the LCD
 
-  // Stimulus generation
-  initial begin
-    CLK = 0;
-    DATA = 8'b11011011; // Example data
-    OPER = 2'b01; // Example operation: Data
-    ENB = 1;
-    RST = 0;
+        #10 DATA = 8'b10101010; // Write data (8 bits wide)
+        ENB = 1'b1; // Enable data transfer
+        #10 ENB = 1'b0; // Disable data transfer
+        
+        // Test case 2: Read data from the LCD
 
-    // Reset LCD
-    #10 RST = 1;
+        ENB = 1'b1; // Enable read operation
+        #10 ENB = 1'b0; // Disable read operation
+        
+        // Test case 3: Reset the LCD module
+        RST = 1'b1; // Set reset signal
+        #10 RST = 1'b0; // Release reset signal
+        
+        // Test case 4: Send another data after reset
 
-    // Wait for some cycles
-    #50;
+        #10 DATA = 8'b11110000; // Write data (8 bits wide)
+        ENB = 1'b1; // Enable data transfer
+        #10 ENB = 1'b0; // Disable data transfer
+        
+        // Test case 5: Perform an instruction operation
 
-    // Send data to LCD
-    #10 ENB = 1;
-    #10 ENB = 0;
-    #10 ENB = 1;
-
-    // Wait for RDY signal to be high (indicating the module is idle)
-    wait(RDY);
-
-    // Add more test cases or simulation steps as needed
-
-    // End simulation
-    $stop;
-  end
+        #10 DATA = 8'b01010101; // Write instruction (8 bits wide)
+        ENB = 1'b1; // Enable data transfer
+        #10 ENB = 1'b0; // Disable data transfer
+        
+        // Simulation end
+        $finish;
+    end
 
 endmodule
+
+

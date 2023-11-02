@@ -1,11 +1,14 @@
 `timescale 1ns / 1ps
 
+
+
+
 module pes_lcd(
 	CLK, LCD_RS, LCD_RW, LCD_E, LCD_DB, RDY, DATA, OPER, ENB, RST
 );
 input CLK;			// For this code to work without modification, CLK should equal 24MHz
-input DATA;			// The Data to send to the LCD Module
-input OPER;			// The Type of operation to perform (data or instruction) 
+input [7:0] DATA;			// The Data to send to the LCD Module
+input [1:0] OPER;			// The Type of operation to perform (data or instruction) 
 input ENB;			// Tells the module that the data is valid and start reading DATA and OPER
 input RST;
 
@@ -29,6 +32,7 @@ when RS and R/W change STATE...wait for at least 40ns ( ~1clock cycle )
 after that period of time bring E high and invert E every 250ns (can be larger) ( ~6 clock cycles)
 while E is HI, set DATA
 when E goes LOW, maintain DATA for atleast 10ns
+
 CLOCK=24MHz ==> 41.667ns
 -------------------------END OF NOTES-------------------*/
 //===============================================================================================
@@ -586,3 +590,5 @@ always @(posedge CLK) begin
 	endcase
 end
 endmodule
+
+
