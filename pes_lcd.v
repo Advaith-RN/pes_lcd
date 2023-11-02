@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module FPGA_2_LCD(
+module pes_lcd(
 	CLK, LCD_RS, LCD_RW, LCD_E, LCD_DB, RDY, DATA, OPER, ENB, RST
 );
 input CLK;			// For this code to work without modification, CLK should equal 24MHz
