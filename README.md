@@ -107,7 +107,14 @@ Now type ```show``` to display the netlist.
 
 ![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/efe04566-808a-491f-b523-a68409da4f64)
 
+## GLS
 
+Import the primatives.v and sky130_fd_sc_hd.v from the sky130 repo.Then run:
+```
+ iverilog primitives.v sky130_fd_sc_hd.v pes_lcd.v  pes_lcd_tb.v 
+```
+Run ```./a.out``` and open the generated vcd file with gtkwave.
 
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/308ece5a-e52a-4817-82a8-0c70b9efb143)
 
 
