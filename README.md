@@ -118,3 +118,24 @@ Run ```./a.out``` and open the generated vcd file with gtkwave.
 ![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/308ece5a-e52a-4817-82a8-0c70b9efb143)
 
 
+
+# Physical Design
+
+Add the design to the Openlane/designs folder.
+```
+cd OpenLane\designs
+mkdir pes_lcd
+cd pes_lcd
+mkdir src
+```
+
+Create a config file.
+```
+gedit config.json
+```
+
+
+
+
+
+
