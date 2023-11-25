@@ -134,6 +134,31 @@ Create a config file.
 gedit config.json
 ```
 
+Add your verilog file and add the required pdks as well. Invoke ```make mount``` in the openlane directory and prep your design.
+```
+cd ~/Openlane
+make mount
+./flow.tcl -interactive
+
+package require openlane 0.9
+prep -design pes_lcd
+```
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/a46ac4ca-3b52-4c02-bb39-b4bff0468660)
+
+
+```run_synthesis``` on the design.
+
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/2c54886f-ff00-4e9c-ac5b-7db3e59a7884)
+
+You can view the report in ```/home/OpenLane/designs/pes_lcd/runs/RUN_2023.11.25_14.36.53/reports.```
+
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/754540ff-386f-4501-8ca1-4fbf7535c31e)
+
+
+
+
 
 
 
