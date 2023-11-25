@@ -1,4 +1,4 @@
-# The complete ASIC flow for a module that controls a 16x2 lcd display
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/2f7859a4-d219-47e8-87fa-d4b8dfa9a979)![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/65fd6b1d-b471-4567-b000-9c6f0b62052e)# The complete ASIC flow for a module that controls a 16x2 lcd display
 
 ## Intro
 The objective of this project is to control a 16x2 LCD display. We will be using iVerilog to design the submodules.
@@ -153,8 +153,33 @@ prep -design pes_lcd
 
 You can view the report in ```/home/OpenLane/designs/pes_lcd/runs/RUN_2023.11.25_14.36.53/reports.```
 
-
 ![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/754540ff-386f-4501-8ca1-4fbf7535c31e)
+
+Now ```run_floorplan```.
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/f01654db-f88f-4ae5-ba89-b04e923c812a)
+
+You can view the results in ```/home/OpenLane/designs/pes_lcd/runs/RUN_2023.11.25_14.36.53/results./floorplan``` using magic. 
+
+```
+magic -T ../../../sky130A.tech lef read ../../tmp/merged.nom.lef def pes_lcd.def &
+```
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/ad63c3cc-316c-4836-bffb-769ccacf0590)
+
+Now run the placement.
+```
+run_placement
+```
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/17c0b75e-b8cc-46eb-9478-113dfdf6e8f3)
+
+Run the clock tree synthesis using
+```
+run_cts
+```
+View the slack reports at 
+```
+~/OpenLane/designs/pes_traffic/runs/RUN_2023.11.25_14.36.53/logs/cts/12-cts_sta.log
+```
 
 
 
