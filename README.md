@@ -215,10 +215,16 @@ magic -T /home/Desktop/Downloads/sky130A.tech lef read ../../tmp/merged.nom.lef 
 
 ![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/f9835fbb-96d1-4713-923a-f39e612a56b2)
 
+## Stats
 
+**Worst Slack(max):** 7.04
+**Worst Slack(min):** 0.22
 
+**Internal Power:** 5.31e-06
+**Switching Power:** 1.12e-06
+**Internal Power:** 4.79e-10
 
-
+**Total Power:** 6.43e-06
 
 
 
