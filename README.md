@@ -1,4 +1,4 @@
-![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/2f7859a4-d219-47e8-87fa-d4b8dfa9a979)![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/65fd6b1d-b471-4567-b000-9c6f0b62052e)# The complete ASIC flow for a module that controls a 16x2 lcd display
+# The complete ASIC flow for a module that controls a 16x2 lcd display
 
 ## Intro
 The objective of this project is to control a 16x2 LCD display. We will be using iVerilog to design the submodules.
@@ -170,16 +170,53 @@ Now run the placement.
 ```
 run_placement
 ```
-![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/17c0b75e-b8cc-46eb-9478-113dfdf6e8f3)
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/48027a81-1de9-4a4c-9e02-87ceae291ba8)
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/3f38b647-0fb9-4088-bd01-cb581aca4398)
+
 
 Run the clock tree synthesis using
 ```
 run_cts
 ```
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/0ab99adf-c372-49cc-8817-22dded96106b)
+
+
 View the slack reports at 
 ```
-~/OpenLane/designs/pes_traffic/runs/RUN_2023.11.25_14.36.53/logs/cts/12-cts_sta.log
+~/OpenLane/designs/pes_traffic/runs/RUN_2023.11.25_14.36.53/logs/cts/16-cts_sta.log
 ```
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/5208801d-dfa4-408a-9c24-82f88599a977)
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/2d21bdc4-b34f-429f-952c-383d17e71d23)
+
+Next we do the routing.
+```
+run_routing
+```
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/ccfc616b-3796-4667-9b04-6a999c8fdc6a)
+
+This can be viewed at the ```results/routing``` directory.
+
+```
+magic -T /home/Desktop/Downloads/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_lcd.def &
+```
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/e301046a-f74f-473f-96bc-3823cf678672)
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/285d0d74-784a-48c6-a79a-fd397792b70b)
+
+## Reports
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/a10ef00e-e8d2-42d7-9a96-09257b6d0175)
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/b8aff970-5d42-4b0f-8183-181643fad3e7)
+
+![image](https://github.com/Advaith-RN/pes_lcd/assets/77977360/f9835fbb-96d1-4713-923a-f39e612a56b2)
+
+
+
 
 
 
